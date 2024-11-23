@@ -5,7 +5,15 @@ import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
 
 class TabCompleter : TabCompleter {
-    override fun onTabComplete(commandSender: CommandSender, command: Command, label: String, args: Array<out String>): MutableList<String>? {
-        TODO("Not yet implemented")
+    override fun onTabComplete(
+        commandSender: CommandSender,
+        command: Command,
+        label: String,
+        args: Array<out String>
+    ): MutableList<String> {
+        return when (args.size) {
+            1 -> mutableListOf(CommandConst.LINK_COMMAND, CommandConst.UN_LINK_COMMAND)
+            else -> mutableListOf()
+        }
     }
 }
