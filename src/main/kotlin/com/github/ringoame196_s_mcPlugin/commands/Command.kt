@@ -29,9 +29,9 @@ class Command : CommandExecutor {
         }
 
         val playerUUID = sender.uniqueId.toString()
-        val discordName = linkManager.acquisitionDiscordName(playerUUID)
+        val discordID = linkManager.acquisitionDiscordID(playerUUID)
 
-        if (discordName == null) {
+        if (discordID == null) {
             val authKey = linkManager.issueAuthKey(sender)
 
             if (authKey != null) {
@@ -39,9 +39,10 @@ class Command : CommandExecutor {
                 sender.sendMessage(message)
             } else {
                 val message = "${ChatColor.RED}認証キーが正常に生成されませんでした"
+                sender.sendMessage(message)
             }
         } else {
-            val message = "${ChatColor.RED}${discordName}と連携済みです"
+            val message = "${ChatColor.RED}${discordID}と連携済みです"
             sender.sendMessage(message)
         }
     }
