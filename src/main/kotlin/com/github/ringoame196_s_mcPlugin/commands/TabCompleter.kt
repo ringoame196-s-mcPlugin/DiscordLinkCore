@@ -10,7 +10,7 @@ class TabCompleter : TabCompleter {
         return when (args.size) {
             1 -> mutableListOf(CommandConst.LINK_COMMAND, CommandConst.UN_LINK_COMMAND, CommandConst.SHOW_COMMAND)
             2 -> when (args[0]) {
-                CommandConst.SHOW_COMMAND -> (Bukkit.getOnlinePlayers().map { it.name }.toMutableList())
+                CommandConst.SHOW_COMMAND -> (Bukkit.getOnlinePlayers().map { it.name } + "@a" + "@p" + "@r" + "@s").toMutableList()
                 else -> mutableListOf()
             }
             else -> mutableListOf()
