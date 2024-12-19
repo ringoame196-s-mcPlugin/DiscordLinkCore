@@ -8,9 +8,9 @@ import org.bukkit.command.TabCompleter
 class TabCompleter : TabCompleter {
     override fun onTabComplete(commandSender: CommandSender, command: Command, label: String, args: Array<out String>): MutableList<String>? {
         return when (args.size) {
-            1 -> mutableListOf(CommandConst.LINK_COMMAND, CommandConst.UN_LINK_COMMAND, CommandConst.SHOW_COMMAND)
+            1 -> mutableListOf(McCommandConst.LINK_COMMAND, McCommandConst.UN_LINK_COMMAND, McCommandConst.SHOW_COMMAND)
             2 -> when (args[0]) {
-                CommandConst.SHOW_COMMAND -> (Bukkit.getOnlinePlayers().map { it.name } + "@a" + "@p" + "@r" + "@s").toMutableList()
+                McCommandConst.SHOW_COMMAND -> (Bukkit.getOnlinePlayers().map { it.name } + "@a" + "@p" + "@r" + "@s").toMutableList()
                 else -> mutableListOf()
             }
             else -> mutableListOf()

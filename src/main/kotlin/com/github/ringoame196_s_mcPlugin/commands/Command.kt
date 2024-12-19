@@ -6,6 +6,9 @@ import org.bukkit.command.CommandSender
 
 class Command : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        TODO("Not yet implemented")
+        if (args.isEmpty()) return false
+        val subCommand = args[0]
+
+        return true
     }
 }
