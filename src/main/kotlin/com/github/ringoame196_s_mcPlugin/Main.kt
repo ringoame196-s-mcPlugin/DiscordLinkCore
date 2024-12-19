@@ -9,6 +9,12 @@ class Main : JavaPlugin() {
 
     override fun onEnable() {
         super.onEnable()
+
+        saveDefaultConfig() // config生成
+        bootDiscordBOT()
+
+        if (!File(plugin.dataFolder, "data.db").exists()) saveResource("data.db", false)
+
         val command = getCommand("dcore")
         command!!.setExecutor(Command())
         command.tabCompleter = TabCompleter()
