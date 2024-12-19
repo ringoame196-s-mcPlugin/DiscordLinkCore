@@ -1,4 +1,4 @@
-package com.github.ringoame196_s_mcPlugin
+package com.github.ringoame196_s_mcPlugin.discord
 
 object DiscordCommandConst {
     const val LINK_COMMAND = "link"

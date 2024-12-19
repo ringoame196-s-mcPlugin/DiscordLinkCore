@@ -2,6 +2,8 @@ package com.github.ringoame196_s_mcPlugin
 
 import com.github.ringoame196_s_mcPlugin.commands.Command
 import com.github.ringoame196_s_mcPlugin.commands.TabCompleter
+import com.github.ringoame196_s_mcPlugin.discord.DiscordCommandConst
+import com.github.ringoame196_s_mcPlugin.discord.SlashCommandEvent
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
