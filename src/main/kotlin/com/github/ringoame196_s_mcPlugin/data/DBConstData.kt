@@ -1,4 +1,4 @@
-package com.github.ringoame196_s_mcPlugin
+package com.github.ringoame196_s_mcPlugin.data
 
 object DBConstData {
     const val TABLE_NAME = "linkdata"
