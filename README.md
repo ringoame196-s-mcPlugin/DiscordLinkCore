@@ -6,16 +6,23 @@
 [ダウンロードリンク](https://github.com/ringoame196-s-mcPlugin/DiscordLinkCore/releases/latest)
 
 ## コマンド
-| コマンド名   |     説明      | 権限 |
-| --- | ----------- | ------- |
-| コマンド名 | 説明 | 権限 |
+| コマンド名       |     説明      | 権限 |
+|-------------| ----------- | ------- |
+| コマンド名       | 説明 | 権限 |
+| /dcore link | Discordアカウントと連携する | ----|
+| /dcore unlink | Discordアカウントとの連携を解除する | ---- |
+| /dcore show | 自分自身の連携情報を出力 | ---- |
+| /dcore show <ターゲット> | ターゲットの連携情報を出力 | op |
 
-## 使い方
+## API
+[参照](https://github.com/ringoame196-s-mcPlugin/DiscordLinkCore)
 
 ## configファイル
 | key名   |     説明      | デフォルト値 |
 | --- | ----------- | ------- |
- 
+| token | DiscordBOTのToken | "" |
+| action | DiscordBOTのアクションテキスト | "Minecraft" |
+
 ## 開発環境
 - Minecraft Version : 1.20.1
 - Kotlin Version : 1.8.0
