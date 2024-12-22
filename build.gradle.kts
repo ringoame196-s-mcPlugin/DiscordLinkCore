@@ -51,7 +51,8 @@ configure<BukkitPluginDescription> {
     commands {
         register("dcore") {
             description = "DiscordLinkCoreのコマンド"
-            permission = "/dcore <サブコマンド>"
+            usage = "/dcore <link,unlink,show>"
+
         }
     }
 }
