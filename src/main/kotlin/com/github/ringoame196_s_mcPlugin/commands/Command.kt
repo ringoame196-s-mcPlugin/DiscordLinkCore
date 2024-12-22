@@ -1,5 +1,6 @@
 package com.github.ringoame196_s_mcPlugin.commands
 
+import com.github.ringoame196_s_mcPlugin.data.Data
 import com.github.ringoame196_s_mcPlugin.managers.LinkManager
 import net.md_5.bungee.api.ChatColor
 import org.bukkit.Bukkit
@@ -7,10 +8,9 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
-import org.bukkit.plugin.Plugin
 
-class Command(plugin: Plugin) : CommandExecutor {
-    private val linkManager = LinkManager(plugin)
+class Command() : CommandExecutor {
+    private val linkManager = LinkManager()
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (args.isEmpty()) return false
@@ -40,6 +40,13 @@ class Command(plugin: Plugin) : CommandExecutor {
             sender.sendMessage(message)
             return
         }
+
+        if (Data.jda == null) {
+            val message = "${ChatColor.RED}現在DiscordBOTが設定されていません"
+            sender.sendMessage(message)
+            return
+        }
+
         val mcUUID = sender.uniqueId.toString()
 
         val discordID = linkManager.acquisitionDiscordID(mcUUID)
@@ -47,10 +54,11 @@ class Command(plugin: Plugin) : CommandExecutor {
             val authKey = linkManager.creationAuthKey(sender)
 
             if (authKey != null) {
-                val message = "${ChatColor.GOLD}[認証キー] $authKey"
+                val message = "${ChatColor.GOLD}[認証キー] $authKey\n" +
+                    "${ChatColor.YELLOW}Discord鯖で「/link $authKey」を実行してください"
                 sender.sendMessage(message)
             } else {
-                val message = "${ChatColor.RED}認証キー生成に失敗しました"
+                val message = "${ChatColor.RED}認証キー生成に失敗しました しばらく時間を明けて実行してください"
                 sender.sendMessage(message)
             }
         } else {

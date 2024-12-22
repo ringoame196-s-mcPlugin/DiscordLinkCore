@@ -1,16 +1,16 @@
 package com.github.ringoame196_s_mcPlugin.managers
 
-import com.github.ringoame196_s_mcPlugin.DBConstData
+import com.github.ringoame196_s_mcPlugin.data.DBConstData
+import com.github.ringoame196_s_mcPlugin.data.Data
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
-import org.bukkit.plugin.Plugin
 import java.util.UUID
 import kotlin.random.Random
 
-class LinkManager(plugin: Plugin) {
-    private val databaseManager = DataBaseManager("${plugin.dataFolder}/data.db")
+class LinkManager() {
+    private val databaseManager = DataBaseManager("${Data.plugin?.dataFolder}/data.db")
 
     fun creationAuthKey(player: Player): String? {
         val length = 3

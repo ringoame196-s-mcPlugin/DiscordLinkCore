@@ -4,10 +4,9 @@ import com.github.ringoame196_s_mcPlugin.managers.LinkManager
 import net.dv8tion.jda.api.events.interaction.SlashCommandEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import org.bukkit.Bukkit
-import org.bukkit.plugin.Plugin
 
-class SlashCommandEvent(plugin: Plugin) : ListenerAdapter() {
-    private val linkManager = LinkManager(plugin)
+class SlashCommandEvent() : ListenerAdapter() {
+    private val linkManager = LinkManager()
 
     override fun onSlashCommand(e: SlashCommandEvent) {
         val command = e.name
