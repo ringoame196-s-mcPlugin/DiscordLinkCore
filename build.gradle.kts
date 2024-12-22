@@ -3,6 +3,7 @@ import dev.s7a.gradle.minecraft.server.tasks.LaunchMinecraftServerTask
 import dev.s7a.gradle.minecraft.server.tasks.LaunchMinecraftServerTask.JarUrl
 import groovy.lang.Closure
 import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
+import net.minecrell.pluginyml.bukkit.BukkitPluginDescription.PluginLoadOrder
 import java.net.HttpURLConnection
 import java.net.ConnectException
 import java.net.URL
@@ -52,9 +53,11 @@ configure<BukkitPluginDescription> {
         register("dcore") {
             description = "DiscordLinkCoreのコマンド"
             usage = "/dcore <link,unlink,show>"
-
         }
     }
+
+    // 他のPluginが依存できるように明記
+    load = PluginLoadOrder.STARTUP
 }
 
 tasks.withType<ShadowJar> {
