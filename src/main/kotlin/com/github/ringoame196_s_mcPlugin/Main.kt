@@ -4,6 +4,7 @@ import com.github.ringoame196_s_mcPlugin.commands.Command
 import com.github.ringoame196_s_mcPlugin.commands.TabCompleter
 import com.github.ringoame196_s_mcPlugin.discord.DiscordCommandConst
 import com.github.ringoame196_s_mcPlugin.discord.SlashCommandEvent
+import com.github.ringoame196_s_mcPlugin.managers.LinkManager
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
@@ -18,13 +19,16 @@ class Main : JavaPlugin() {
     override fun onEnable() {
         super.onEnable()
 
+        val linkManager = LinkManager(plugin)
+
         saveDefaultConfig() // config生成
         bootDiscordBOT()
 
         if (!File(plugin.dataFolder, "data.db").exists()) saveResource("data.db", false)
+        linkManager.resetAuthKey()
 
         val command = getCommand("dcore")
-        command!!.setExecutor(Command())
+        command!!.setExecutor(Command(plugin))
         command.tabCompleter = TabCompleter()
     }
 
@@ -40,7 +44,7 @@ class Main : JavaPlugin() {
             if (token != "" && token != null) { // tokenが設定されていないと 実行しない
                 val jdaBuilder = JDABuilder.createDefault(token)
                 jdaBuilder.setActivity(Activity.playing(activity))
-                jda = jdaBuilder.addEventListeners(SlashCommandEvent()).build() // bot起動
+                jda = jdaBuilder.addEventListeners(SlashCommandEvent(plugin)).build() // bot起動
             } else {
                 val message = "Token not set"
                 logger.info(message) // token未設定時にメッセージを出す
