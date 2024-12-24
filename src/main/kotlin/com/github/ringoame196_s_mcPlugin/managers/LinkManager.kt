@@ -13,7 +13,7 @@ class LinkManager() {
     private val databaseManager = DataBaseManager("${Data.plugin?.dataFolder}/data.db")
 
     fun creationAuthKey(player: Player): String? {
-        val length = 3
+        val length = 4
         val mcUUID = player.uniqueId.toString()
         val mcName = player.name
         var authKey: String
